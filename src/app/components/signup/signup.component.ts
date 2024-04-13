@@ -30,10 +30,10 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     this.authService.register(this.registerForm.value).subscribe(
-      (result) => {
+      (result:any) => {
         console.log(result);
       },
-      (error) => {
+      (error:any) => {
         this.errors = error.error;
       },
       () => {

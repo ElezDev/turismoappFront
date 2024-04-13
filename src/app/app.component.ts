@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.auth.userAuthState.subscribe((val) => {
+    this.auth.userAuthState.subscribe((val:any) => {
       this.isSignedIn = val;
     });
   }
