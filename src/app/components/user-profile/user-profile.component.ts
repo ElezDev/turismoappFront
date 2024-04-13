@@ -14,13 +14,16 @@ export class User {
 })
 
 export class UserProfileComponent implements OnInit {
-  UserProfile!: User;
+  UserProfile: User = new User(); // Inicializar UserProfile
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService) {}
+
+  ngOnInit() {
     this.authService.profileUser().subscribe((data: any) => {
-      this.UserProfile = data;
+      if (data && data.user) {
+        this.UserProfile.name = data.user.name;
+        this.UserProfile.email = data.user.email;
+      }
     });
   }
-
-  ngOnInit() {}
 }
